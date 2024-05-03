@@ -21,15 +21,15 @@
 <body>
 	<div class="main">  	
 		<input type="checkbox" id="chk" aria-hidden="true">
-
 			<div class="signup">
-				<form>
+				<form method="POST" action=".">
 					<label for="chk" aria-hidden="true">Sign up</label>
-					<input type="text" name="txt" placeholder="User name" required="">
-					<input type="email" name="email" placeholder="Email" required="">
-					<input type="password" name="pswd" placeholder="Password" required="">
-					<input type="password2" name="pswd2" placeholder="Password2" required="">
-					<button>Sign up</button>
+					{{ form.username }}
+					{{ form.email }}
+					{{ form.password1 }}
+					{{ form.password2 }}
+					{% csrf_token %}
+					<input type="submit" class="submit" value="signup">
 				</form>
 			</div>
 

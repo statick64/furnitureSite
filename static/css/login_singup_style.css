@@ -35,19 +35,19 @@ label{
 	cursor: pointer;
 	transition: .5s ease-in-out;
 }
-input{
+.form-input{
 	width: 60%;
 	height: 20px;
 	background: #e0dede;
 	justify-content: center;
 	display: flex;
-	margin: 20px auto;
+	margin: 10px auto;
 	padding: 10px;
 	border: none;
 	outline: none;
 	border-radius: 5px;
 }
-button{
+.submit{
 	width: 60%;
 	height: 40px;
 	margin: 10px auto;
@@ -64,7 +64,7 @@ button{
 	transition: .2s ease-in;
 	cursor: pointer;
 }
-button:hover{
+.submit:hover{
 	background: #6a6a6a;
 }
 .login{
