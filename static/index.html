@@ -35,14 +35,14 @@
 						<li class="nav-item active">
 							<a class="nav-link" href="index.html">Home</a>
 						</li>
-						<li><a class="nav-link" href="shop.html">Shop</a></li>
+						<li><a class="nav-link" href="{% url 'backend:shop' %}">Shop</a></li>
 						<li><a class="nav-link" href="about.html">About us</a></li>
 						<li><a class="nav-link" href="services.html">Services</a></li>
 						<li><a class="nav-link" href="contact.html">Contact us</a></li>
 					</ul>
 
 					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-						<li><a class="nav-link" href="login_singup.html"><img src="{% static 'images/user.svg' %}"></a></li>
+						<li><a class="nav-link" href="{% url 'backend:login_signup' %}"><img src="{% static 'images/user.svg' %}"></a></li>
 						<li><a class="nav-link" href="cart.html"><img src="{% static 'images/cart.svg' %}"></a></li>
 					</ul>
 				</div>
@@ -80,7 +80,7 @@
 					<div class="col-md-12 col-lg-3 mb-5 mb-lg-0">
 						<h2 class="mb-4 section-title">Crafted with excellent material.</h2>
 						<p class="mb-4"> We often incorporates a neutral color palette with bold accents, geometric shapes, and a mix of materials like metal, glass, and wood.</p>
-						<p><a href="shop.html" class="btn">Explore</a></p>
+						<p><a href="{% url 'backend:shop' %}" class="btn">Explore</a></p>
 					</div> 
 					<!-- End Column 1 -->
 

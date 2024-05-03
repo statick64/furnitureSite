@@ -7,3 +7,9 @@ import json
 # Create your views here.
 def home(request):
     return render(request, "index.html")
+
+def shop(request):
+    return render(request, "shop.html")
+
+def login_signup(request):
+    return render(request, "login_singup.html")

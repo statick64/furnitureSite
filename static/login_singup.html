@@ -1,9 +1,10 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
   <title>CodePen - Sign up / Login Form</title>
-  <link rel="stylesheet" href="css/login_singup_style.css">
+  <link rel="stylesheet" href="{% static 'css/login_singup_style.css' %}">
 
 
 
@@ -14,7 +15,7 @@
 <html>
 <head>
 	<title>Slide Navbar</title>
-	<link rel="stylesheet" type="text/css" href="slide navbar style.css">
+	<link rel="stylesheet" type="text/css" href="{% static 'slide navbar css/login_singup_style.css' %}">
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -27,6 +28,7 @@
 					<input type="text" name="txt" placeholder="User name" required="">
 					<input type="email" name="email" placeholder="Email" required="">
 					<input type="password" name="pswd" placeholder="Password" required="">
+					<input type="password2" name="pswd2" placeholder="Password2" required="">
 					<button>Sign up</button>
 				</form>
 			</div>
