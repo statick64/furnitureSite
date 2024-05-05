@@ -15,6 +15,7 @@
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 		<link href="{% static 'css/tiny-slider.css' %}" rel="stylesheet">
 		<link href="{% static 'css/style.css' %}" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'css/login_singup_style.css' %}">
 		<title>Furni </title>
 	</head>
 
@@ -42,7 +43,7 @@
 					</ul>
 
 					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-						<li><a class="nav-link" href="{% url 'backend:register' %}"><img src="{% static 'images/user.svg' %}"></a></li>
+						<li><a class="nav-link" href="{% url 'backend:login_signup' %}"><img src="{% static 'images/user.svg' %}"></a></li>
 						<li><a class="nav-link" href="{% url 'backend:shopping_cart' %}"><img src="{% static 'images/cart.svg' %}"></a></li>
 					</ul>
 				</div>
@@ -54,20 +55,17 @@
 		<!-- Start Why Choose Us Section -->
 		<div class="why-choose-section">
 			<div class="container">
-				<div class="row justify-content-between align-items-center">
-					<div class="col-lg-6">
-						<h2 class="section-title">Under Construction</h2>
-						<p>Page is under construnction and will be available soon.</p>
-
-
-
-					<div class="col-lg-5">
-						<div class="img-wrap">
-							<img src="{% static 'images/why-choose-us-img.jpg' %}" alt="Image" class="img-fluid">
-						</div>
-					</div>
-
-				</div>
+                <form method="POST"  action="">
+                    <div class="signup">
+                        <form method="POST" action="">
+                            <label class="chk form-label" aria-hidden="true">Login</label>
+                            {{ form.username }}
+                            {{ form.password }}
+                            {% csrf_token %}
+                            <input type="submit" class="submit" name="login" value="Login">
+                        </form>
+                    </div>
+                </form>
 			</div>
 		</div>
 		<!-- End Why Choose Us Section -->
