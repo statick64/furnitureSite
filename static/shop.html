@@ -106,7 +106,7 @@
 		      		<!-- Start Column 1 -->
 					{% for product in products %}
 					<div class="col-12 col-md-4 col-lg-3 mb-5 productcontainer">
-						<button class="product-item" data-product="{{product.id}}" data-action="add">
+						<button class="product-item update-cart" data-product="{{product.id}}" data-action="add">
 							<img src="{{ product.image.url }}" class="img-fluid product-thumbnail">
 							<h3 class="product-title">{{product.ProductName}}</h3>
 							<strong class="product-price" id="price">P{{product.Price}}</strong>

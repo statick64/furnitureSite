@@ -106,11 +106,13 @@
                           <td>
                             <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
                               <div class="input-group-prepend">
-                                <button class="btn btn-outline-black decrease" type="button">&minus;</button>
+                                <button class="btn btn-outline-black decrease update-cart" data-product="{{product.id}}" data-action="add" type="button">&minus;</button>
                               </div>
-                              <input type="text" class="form-control text-center quantity-amount" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                              <!-- <input type="text" class="form-control text-center quantity-amount" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1"> -->
+                              <div class="form-control text-center quantity-amount">{{ item.quantity}}</div>
                               <div class="input-group-append">
-                                <button class="btn btn-outline-black increase" type="button">&plus;</button>
+                                <!-- <button class="btn btn-outline-black increase update-cart" data-product="{{product.id}}" data-action="remove" type="button">&plus;</button> -->
+                                <a class="btn btn-outline-black increase update-cart" data-product="{{product.id}}" data-action="remove">&plus;</a>
                               </div>
                             </div>
         

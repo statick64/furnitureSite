@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http import JsonResponse, HttpResponse
+import json
 
 
 from .forms import SignUpForm, UserCreationForm, CustomAuthenticationForm
@@ -91,6 +92,26 @@ def checkout(request):
 
 
 def updateItem(request):
+    data = json.loads(request.body)
+    productId = data['productId']
+    action = data['action']
+    print('Action:', action)
+    print('Product:', productId)
+    
+    customer = request.user.customer
+    product = Products.objects.get(id=productId)
+    order, created = Order.objects.get_or_create(customer=customer)
+    orderItem, created = OrderItem.objects.get_or_create(order=order, product=product)
+    
+    if action == 'add':
+        orderItem.quantity = (orderItem.quantity + 1)
+    elif action == 'remove':
+        orderItem.quantity = (orderItem.quantity - 1)
+    
+    orderItem.save()
+    
+    if orderItem.quantity <= 0:
+        orderItem.delete()
     return JsonResponse('Item was added', safe=False)
 
 
