@@ -15,7 +15,29 @@
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 		<link href="{% static 'css/tiny-slider.css' %}" rel="stylesheet">
 		<link href="{% static 'css/style.css' %}" rel="stylesheet">
-		<title>Furni Free Bootstrap 5 Template for Furniture and Interior Design Websites by Untree.co </title>
+		<title>Furni</title>
+
+		<script type="text/javascript">
+			var user = '{{request.user}}'
+
+			function getToken(name){
+			var cookieValue = null;
+			if (document.cookie && document.cookie !== ''){
+				var cookies = document.cookie.split(';');
+				for (var i = 0; i < cookies.length; i++) {
+					var cookie = cookies[i].trim();
+					//checks if cookie string begin with the name we want?
+					if (cookie.substring(0, name.length + 1) === (name + '=')){
+						cookieValue = decodeURIComponent(cookie.substring(
+							name.length + 1));
+							break;
+					}
+				}
+			}
+			return cookieValue;
+			}
+			var csrftoken = getToken('csrftoken');
+		</script>
 	</head>
 
 	<body>
@@ -41,10 +63,17 @@
 						<li><a class="nav-link" href="{% url 'backend:404' %}">Contact us</a></li>
 					</ul>
 
-					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-						<li><a class="nav-link" href="{% url 'backend:login_signup' %}"><img src="{% static 'images/user.svg' %}"></a></li>
-						<li><a class="nav-link" href="{% url 'backend:shopping_cart' %}"><img src="{% static 'images/cart.svg' %}"></a></li>
-					</ul>
+					{% if user.is_authenticated %}
+						<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+							<li><a class="nav-link" href="{% url 'backend:logout' %}">{{ user.username }}</a></li>
+							<li><a class="nav-link" href="{% url 'backend:shopping_cart' %}"><img src="{% static 'images/cart.svg' %}"></a></li>
+						</ul>
+					{% else %}
+						<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+							<li><a class="nav-link" href="{% url 'backend:login' %}"><img src="{% static 'images/user.svg' %}"></a></li>
+							<li><a class="nav-link" href="{% url 'backend:shopping_cart' %}"><img src="{% static 'images/cart.svg' %}"></a></li>
+						</ul>
+					{% endif %}
 				</div>
 			</div>
 				
@@ -76,16 +105,16 @@
 
 		      		<!-- Start Column 1 -->
 					{% for product in products %}
-					<div class="col-12 col-md-4 col-lg-3 mb-5">
-						<a class="product-item" href="#">
+					<div class="col-12 col-md-4 col-lg-3 mb-5 productcontainer">
+						<button class="product-item" data-product="{{product.id}}" data-action="add">
 							<img src="{{ product.image.url }}" class="img-fluid product-thumbnail">
 							<h3 class="product-title">{{product.ProductName}}</h3>
-							<strong class="product-price">P{{product.Price}}</strong>
+							<strong class="product-price" id="price">P{{product.Price}}</strong>
 
 							<span class="icon-cross">
 								<img src="{% static 'images/cross.svg' %}" class="img-fluid">
 							</span>
-						</a>
+						</button>
 					</div> 
 					{% endfor %}
 					<!-- End Column 1 -->
@@ -255,6 +284,7 @@
 		<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 		<script src="{% static 'js/tiny-slider.js' %}"></script>
 		<script src="{% static 'js/custom.js' %}"></script>
+		<script src="{% static 'js/cart.js' %}"></script>
 	</body>
 
 </html>

@@ -40,11 +40,17 @@
 						<li><a class="nav-link" href="{% url 'backend:404' %}">Services</a></li>
 						<li><a class="nav-link" href="{% url 'backend:404' %}">Contact us</a></li>
 					</ul>
-
-					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-						<li><a class="nav-link" href="{% url 'backend:login_signup' %}"><img src="{% static 'images/user.svg' %}"></a></li>
-						<li><a class="nav-link" href="{% url 'backend:shopping_cart' %}"><img src="{% static 'images/cart.svg' %}"></a></li>
-					</ul>
+					{% if user.is_authenticated %}
+						<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+							<li><a class="nav-link" href="{% url 'backend:logout' %}">{{ user.username }}</a></li>
+							<li><a class="nav-link" href="{% url 'backend:shopping_cart' %}"><img src="{% static 'images/cart.svg' %}"></a></li>
+						</ul>
+					{% else %}
+						<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+							<li><a class="nav-link" href="{% url 'backend:login' %}"><img src="{% static 'images/user.svg' %}"></a></li>
+							<li><a class="nav-link" href="{% url 'backend:shopping_cart' %}"><img src="{% static 'images/cart.svg' %}"></a></li>
+						</ul>
+					{% endif %}
 				</div>
 			</div>
 				

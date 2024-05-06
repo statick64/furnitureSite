@@ -55,18 +55,10 @@
 		<!-- Start Why Choose Us Section -->
 		<div class="why-choose-section">
 			<div class="container">
-                <form method="POST"  action="">
+                <form method="POST"  action="{% url 'backend:logout' %}">
                     <div class="signup">
-                        <form method="POST" action="">
-                            <label class="chk form-label" aria-hidden="true">Sign up</label>
-                            {{ form.username }}
-                            {{ form.email }}
-                            {{ form.password1 }}
-                            {{ form.password2 }}
-                            {% csrf_token %}
-                            <input type="submit" class="submit" name="register" value="Signup">
-                        </form>
-                        <p class=" reg_login">Already have an account<a href="{% url 'backend:login' %}" class="btn btn-sm btn-outline-black">Login</a></p>
+                        {% csrf_token %}
+                        <input type="submit" class="submit" name="login" value="Login">
                     </div>
                 </form>
 			</div>
